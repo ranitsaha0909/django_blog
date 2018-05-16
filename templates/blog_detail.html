@@ -1,0 +1,20 @@
+{% extends 'base.html' %}
+
+{% block content %}
+{% if user.is_authenticated %}
+<pre><h4>Welcome : {{ user.username }}  		<a href="/user/logout">Logout</a>      <a href="/user/">Home</a></h4></pre>
+{% endif%}
+
+<a href="/blog/post">Create a new Blog</a><br>
+    <h1>Blog Details</h1><hr>
+    <div class="post">
+        <pre>
+          Id: {{ post.id }}
+          Title: {{ post.title }}
+          Text: {{ post.text }}
+          {% if post.picture %}Picture :  <img src="{{ post.picture.url }}" alt="picture">{% endif%}
+          Creation Date: {{ post.created_date }}
+          <a href="/blog/edit/{{ post.id }}">Edit</a></pre>
+
+    </div>
+{% endblock %}

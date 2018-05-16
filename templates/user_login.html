@@ -1,0 +1,18 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<h3>User Login</h3>
+<br>
+<form method="POST" class="post-form">   {% csrf_token %}
+  <b>User : <input type="text" id="user" name="user" style="margin-left: 40px"><br>
+  Password : <input type="password" id="password" name="password" style="margin-left: 5px"></b>
+  <br><button type="submit" class="save btn btn-default">Log In</button>
+</form>
+<br>
+New User: <a href="/user/signup">Click Here</a>
+{% if msg %}
+      <div class="messege">
+          {{ msg }}
+      </div>
+  {% endif %}
+{% endblock %}

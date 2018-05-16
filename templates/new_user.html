@@ -1,0 +1,16 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+<h1>New User Registration</h1>
+<table><form method="POST" class="post-form">{% csrf_token %}
+    {{ form.as_table }}
+    <tr><th><button type="submit" class="save btn btn-default">Save</button></th></tr>
+</form></table>
+      {% if messege %}
+            <div class="messege">
+              <tr><th>  {{ messege }} </th></tr>
+            </div>
+        {% endif %}
+Already Registered! -> <a href="/user/login">Login!</a>
+{% endblock %}

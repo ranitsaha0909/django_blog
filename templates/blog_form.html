@@ -1,0 +1,23 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<h1>Blog Form</h1>
+<br>
+{% if user.is_authenticated %}<pre>
+<h4>Welcome : {{ user.username }}  		<a href="/user/logout">Logout</a>      <a href="/user/">Home</a></h4>{% else %}
+<b>Please <a href="/user/login">Login!</a></b>
+{% endif %}</pre>
+<br>
+<br>
+<table><form method="POST" class="post-form" enctype="multipart/form-data">
+  {% csrf_token %}
+    {{ form.as_table }}
+    <th><button type="submit" class="save btn btn-default">Save</button></th>
+
+</form>  </table>
+{% if msg %}
+      <div class="messege">
+          {{ msg }}
+      </div>
+  {% endif %}
+{% endblock %}

@@ -1,0 +1,19 @@
+{% extends 'base.html' %}
+
+{% block content %}
+{% if user.is_authenticated %}
+<pre><h4>Welcome : {{ user.username }}  		<a href="/user/logout">Logout</a>      <a href="/user/">Home</a></h4></pre>
+{% endif%}
+<table>
+<form method="post">{% csrf_token %}
+    <div class="form-group">
+        {{ form.as_table }}
+    </div>
+    <th><button class="btn btn-warning" type="submit">Update</button></th>
+  </form></table>
+  {% if msg %}
+        <div class="messege">
+            {{ msg }}
+        </div>
+    {% endif %}
+  {% endblock %}
